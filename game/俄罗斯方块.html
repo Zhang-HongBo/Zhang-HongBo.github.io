@@ -111,11 +111,15 @@
 		var canGo=true,onStart=false;
 		$(document).ready(function(){
 			bColor=$("#game>table").css("background-color");
-			$("body").width(window.width); 
-			$("body").height(window.height);
+			$("body").width(document.body.clientWidth);
+			$("body").height(document.body.clientHeight);
 			//计算格子的边长
-			cellW=parseFloat($("table").width())/col;
-			
+			//cellW=parseFloat($("table").width())/col;
+			var gameH=parseFloat($("body").height())-40;
+			$("#game").height(gameH);
+			cellW=(gameH-10)/row;
+			var gameW=cellW*col*5/3;
+			$("#game").width(gameW);
 			$("#start,#stop").mouseover(function(){
 				$(this).css("background-color","red");
 			}).mouseout(function(){
